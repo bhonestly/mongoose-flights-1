@@ -2,6 +2,7 @@ const Flight = require('../models/flight');
 
 module.exports = {
     index,
+    indexSort,
     new: newFlight,
     create
 }
@@ -14,6 +15,16 @@ function index(req, res) {
             flights
         })
     })
+}
+
+function indexSort(req, res) {
+    Flight.find({}).sort({departs: 'asc'})
+        .then( flights => {
+            res.render('flights/index', {
+                title: "All Flights",
+                flights })
+        })
+        .catch(err => console.log(err))
 }
 
 function newFlight(req, res) {
