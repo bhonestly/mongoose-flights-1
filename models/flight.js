@@ -13,7 +13,7 @@ const flightSchema = new Schema({
         type: String,
         enum: ['American', 'Southwest', 'United']
     },
-    aiport: {
+    airport: {
         type: String,
         enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'],
         default: 'DEN'
@@ -29,6 +29,5 @@ const flightSchema = new Schema({
         default: oneYearFromNow()
     }
 });
-
 
 module.exports = mongoose.model('Flight', flightSchema);

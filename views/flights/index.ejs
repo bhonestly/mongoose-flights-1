@@ -1,0 +1,28 @@
+<%- include('../partials/header.ejs') %>
+
+<p>
+    <a href="/flights/sort">Sort by Date</a>
+</p>
+<table>
+    <tr>
+        <th>Flight Number</th>
+        <th>Airline</th>
+        <th>Airport</th>
+        <th>Departs</th>
+    </tr>
+
+
+<% flights.forEach( flight => { %>
+
+    <tr>
+        <td><%= flight.flightNo %></td>
+        <td><%= flight.airline %></td>
+        <td><%= flight.airport %></td>
+        <td><%= flight.departs %></td>
+    </tr>
+
+<% }) %>
+
+</table>
+
+<%- include('../partials/footer.ejs') %>
