@@ -10,6 +10,10 @@ module.exports = {
 function index(req, res) {
     Flight.find( {}, (err, flights) => {
         if (err) console.log(err)
+        const now = new Date().toISOString();
+        flights.forEach( flight => {
+            if (flight.departs.toISOString() < now) flight.past = true;
+        })
         res.render('flights/index', {
             title: "All Flights",
             flights
@@ -20,6 +24,10 @@ function index(req, res) {
 function indexSort(req, res) {
     Flight.find({}).sort({departs: 'asc'})
         .then( flights => {
+            const now = new Date().toISOString();
+            flights.forEach( flight => {
+                if (flight.departs.toISOString() < now) flight.past = true;
+            })
             res.render('flights/index', {
                 title: "All Flights",
                 flights })

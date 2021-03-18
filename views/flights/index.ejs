@@ -14,7 +14,7 @@
 
 <% flights.forEach( flight => { %>
 
-    <tr>
+    <tr <%= flight.past ? "class=past" : '' %>>
         <td><%= flight.flightNo %></td>
         <td><%= flight.airline %></td>
         <td><%= flight.airport %></td>
