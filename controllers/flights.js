@@ -4,7 +4,10 @@ module.exports = {
     index,
     indexSort,
     new: newFlight,
-    create
+    create,
+    show,
+    createTicket,
+    deleteTicket
 }
 
 function index(req, res) {
@@ -39,7 +42,7 @@ function newFlight(req, res) {
     const newFlight = new Flight();
     const dt = newFlight.departs;
     const departsDate = dt.toISOString().slice(0, 16);
-    res.render('flights/new', { title: "New Flight", departsDate })
+    res.render('flights/new', { title: "Add Flight", departsDate })
 }
 
 function create(req, res) {
@@ -51,6 +54,33 @@ function create(req, res) {
         }
         res.redirect('/flights');
     })
+}
 
+function show(req, res) {
+    Flight.findById(req.params.id)
+    .then(flight => res.render('flights/show', { title: "Flight Details", flight }))
+    .catch(err => console.log(err))
+}
 
+function createTicket(req, res) {
+    Flight.findById(req.params.id)
+    .then(flight => {
+        flight.tickets.push(req.body);
+        flight.save( err => {
+            if(err) console.log(err);
+            res.redirect(`/flights/${flight._id}`);
+        })
+    })
+    .catch(err => console.log(err))
+}
+
+function deleteTicket(req, res) {
+    Flight.findById(req.params.id)
+    .then(flight => {
+        flight.tickets.id(req.params.tid).remove()
+        flight.save( err => {
+            if(err) console.log(err);
+            res.redirect(`/flights/${flight._id}`);
+        })
+    })
 }

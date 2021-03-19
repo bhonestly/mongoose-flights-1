@@ -2,37 +2,41 @@
 
 <form action="/flights" method="POST">
 <table>
-    <tr>
-        <th>Flight Number</th>
-        <th>Airline</th>
-        <th>Airport</th>
-        <th>Departs</th>
-    </tr>
-    <tr>
-        <td>
-            <input type="number" name="flightNo" class="flightNo" min=10 max=9999 />
-        </td>
-        <td>
-            <select name="airline">
-                <option value="American">American</option>
-                <option value="Southwest">Southwest</option>
-                <option value="United">United</option>
-            </select>
-        </td>
-        <td>
-            <select name="airport">
-                <option value="AUS">AUS</option>
-                <option value="DFW">DFW</option>
-                <option value="DEN" selected>DEN</option>
-                <option value="LAX">LAX</option>
-                <option value="SAN">SAN</option>
-            </select>
-        </td>
-        <td>
-            <input type="datetime-local" name="departs"
-            value="<%= departsDate %>">
-        </td>
-    </tr>
+    <thead>
+        <tr>
+            <th>Flight Number</th>
+            <th>Airline</th>
+            <th>Airport</th>
+            <th>Departs</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <input type="number" name="flightNo" class="flightNo" min=10 max=9999 />
+            </td>
+            <td>
+                <select name="airline">
+                    <option value="American">American</option>
+                    <option value="Southwest">Southwest</option>
+                    <option value="United">United</option>
+                </select>
+            </td>
+            <td>
+                <select name="airport">
+                    <option value="AUS">AUS</option>
+                    <option value="DFW">DFW</option>
+                    <option value="DEN" selected>DEN</option>
+                    <option value="LAX">LAX</option>
+                    <option value="SAN">SAN</option>
+                </select>
+            </td>
+            <td>
+                <input type="datetime-local" name="departs"
+                value="<%= departsDate %>">
+            </td>
+        </tr>
+    </tbody>
 </table>
 
 <input type="submit" value="Save Flight">

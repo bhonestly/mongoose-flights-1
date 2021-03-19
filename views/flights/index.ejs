@@ -4,25 +4,29 @@
     <a href="/flights/sort">Sort by Departure</a>
 </p>
 <table>
-    <tr>
-        <th>Flight Number</th>
-        <th>Airline</th>
-        <th>Airport</th>
-        <th>Departs</th>
-    </tr>
-
-
+    <thead>
+        <tr>
+            <th>Flight Number</th>
+            <th>Airline</th>
+            <th>Airport</th>
+            <th>Departs</th>
+            <th>Tickets Available</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
 <% flights.forEach( flight => { %>
-
-    <tr <%= flight.past ? "class=past" : '' %>>
-        <td><%= flight.flightNo %></td>
-        <td><%= flight.airline %></td>
-        <td><%= flight.airport %></td>
-        <td><%= flight.departs %></td>
-    </tr>
-
+        <tr <%= flight.past ? "class=past" : '' %>>
+            <td><%= flight.flightNo %></td>
+            <td><%= flight.airline %></td>
+            <td><%= flight.airport %></td>
+            <td><%= flight.departs %></td>
+            <td><%= flight.tickets.length %></td>
+            <td><a href="/flights/<%=flight._id%>">View Details</a></td>
+        </tr>
+    
 <% }) %>
-
+    </tbody>    
 </table>
 
 <%- include('../partials/footer.ejs') %>
