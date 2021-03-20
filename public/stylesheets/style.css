@@ -188,7 +188,7 @@ section {
 #add-ticket input, .add-destinations input {
   margin: 4px 0 16px 0;
   background-color: var(--lightblue);
-  border: 0;
+  border: solid 1px #333;
   padding: 1rem;
   color: var(--darkgrey);
   font-size: 2rem;

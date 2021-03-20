@@ -4,7 +4,7 @@
 <div>
     <form action="/destinations" method="POST" class="add-destinations">
     <label for="airports">Airport</label>
-    <input type="text" name="airport" class="short-input">
+    <input type="text" required name="airport" class="short-input">
     <input type="submit" value="Add Destination">
     
     <% if (typeof err === 'object' && err.code === 11000) { %>
@@ -22,7 +22,7 @@
         <thead>
             <tr>
                 <th>Airport</th>
-                <th>Remove</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
