@@ -41,7 +41,8 @@ const flightSchema = new Schema({
         type: Date,
         default: oneYearFromNow()
     },
-    tickets: [ticketSchema]
+    tickets: [ticketSchema],
+    destinations: [{type: Schema.Types.ObjectId, ref: 'Destination'}]
 }, {
     timestamps: true
 });

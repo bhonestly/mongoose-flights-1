@@ -11,5 +11,6 @@ router.get('/:id', flightCtrl.show )
 router.post('/', flightCtrl.create);
 router.post('/:id', flightCtrl.createTicket)
 router.delete('/:id/:tid', flightCtrl.deleteTicket)
+router.delete('/:id', flightCtrl.deleteFlight)
 
 module.exports = router;

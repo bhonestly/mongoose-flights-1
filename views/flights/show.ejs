@@ -7,6 +7,7 @@
         <th>Airline</th>
         <th>Airport</th>
         <th>Departs</th>
+        <th>Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -15,6 +16,7 @@
         <td><%= flight.airline %></td>
         <td><%= flight.airport %></td>
         <td><%= flight.departs %></td>
+        <td><form action="/flights/<%=flight._id%>?_method=DELETE" method="POST"><input type="submit" value="X" class="delete-ecks"></form></td>
     </tr>
     </tbody>
 </table>
@@ -37,7 +39,7 @@
             <tr>
                 <td><%= ticket.seat %></td>
                 <td>$<%= ticket.price %></td>
-                <td><form action="/flights/<%=flight._id%>/<%=ticket._id%>?_method=DELETE" method="POST"><input type="submit" value="X" class="delete-ticket"></form></td>
+                <td><form action="/flights/<%=flight._id%>/<%=ticket._id%>?_method=DELETE" method="POST"><input type="submit" value="X" class="delete-ecks"></form></td>
             </tr>
     <% }) %>
         </tbody>
@@ -49,9 +51,9 @@
     <h2>Add Tickets</h2>
     <form action="/flights/<%=flight._id%>" method="POST" id="addTicket">
         <label for="seat">Seat</label>
-        <input name="seat" required pattern="[A-F][1-9]\d?">
+        <input name="seat" class="short-input" required pattern="[A-F][1-9]\d?">
         <label for="price">Price</label>
-        <input type="number" name="price" min=0>
+        <input type="number" class="short-input" name="price" min=0>
         <input type="submit" value="Add Ticket">
     </form>
 

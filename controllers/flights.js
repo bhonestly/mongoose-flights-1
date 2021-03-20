@@ -7,6 +7,7 @@ module.exports = {
     create,
     show,
     createTicket,
+    deleteFlight,
     deleteTicket
 }
 
@@ -82,5 +83,12 @@ function deleteTicket(req, res) {
             if(err) console.log(err);
             res.redirect(`/flights/${flight._id}`);
         })
+    })
+}
+
+function deleteFlight(req, res) {
+    Flight.deleteOne( { _id : req.params.id }, err => {
+        if (err) console.log(err)
+        res.redirect('/flights');
     })
 }
