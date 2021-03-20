@@ -22,15 +22,25 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-size: 2.4rem;
-  color: 333;
+  color: var(--darkgrey);
   min-height: 100vh;
   margin: 0 auto;
+  background: var(--midgrey);
+
+  --darkblue: #3b78b1;
+  --lightblue: #daf3ff;
+  --midgrey: #8B919A;
+  --darkgrey: #3d4756;
+  --lightgrey: #a1acbd;
+  --orange: #dfa01f;
+
 }
 
 a {
-  color: rgb(60, 143, 221);
+  color:  var(--lightblue);
   text-decoration: none;
   font-size: 2rem;
+  font-weight: bold;
 }
 
 a:hover {
@@ -38,39 +48,50 @@ a:hover {
 }
 
 h1 {
-  margin: 20px 0;
+  margin: 20px 0 20px 0;
+  font-size: 6rem;
+  color: var(--orange);
+  text-shadow: var(--darkblue) 2px 2px 5px;
 }
 
 h2 {
   text-align: center;
+  color: var(--orange);
+  text-shadow: var(--darkblue) 2px 2px 5px;
+  margin: 10px 0;
 }
 
 table {
   border-spacing: 0;
   border-collapse: collapse;
-  margin: 40px auto;
+  margin: 20px auto;
   color: white;
+  font-size: 2rem;
 }
 
-
+table a {
+  color: var(--orange);
+}
 
 tbody > tr:nth-child(even), th {
-  background: rgb(59, 120, 177);
+  background: var(--darkblue);
 }
 tbody > tr:nth-child(odd) {
-  background: #f3f3f3;
-  color: #333;
+  background: var(--lightblue);
+  color: var(--darkgrey);
 }
 
 td, th {
   border: solid 1px #333;
-  padding: 16px 12px;
+  padding: 1rem;
   margin: 0;
   text-align: center;
 }
 
+
 th {
-  font-size: 3rem;
+  font-size: 2.5rem;
+  color: var(--lightblue);
 }
 
 .flightNo {
@@ -79,29 +100,34 @@ th {
 
 nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
+  width: 100vw;
+  background: var(--darkblue);
+  border-bottom: solid 1px black;
 }
 
 nav > a {
   display: inline-block;
-  background-color: rgb(60, 114, 214);
+  background: rgb(59, 120, 177);
   padding: 20px;
   margin: 0;
   text-decoration: none;
-  color: #f3f3f3;
+  color: var(--lightblue);
   font-size: 18px;
   font-weight: bold;
   text-transform: uppercase;
 }
 
 nav > a:hover {
-  text-decoration: underline;
-  background-color: rgb(27, 81, 180);
+  text-decoration: none;
+  background: var(--lightblue);
+  color: var(--orange);
 }
 
 #container {
   width: 90vw;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -109,27 +135,62 @@ nav > a:hover {
   margin: 0 0 0 20px;
 }
 
-.past {
-  color: red;
+#tickets {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
 }
 
 #addTicket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: 20px auto;
-  background: #f3f3f3;
-  padding: 40px;
-  width: 300px;
+  background: var(--darkblue);
+  padding: 20px;
   text-align: center;
+  width: 360px;
   border-radius: 20px;
   border: solid 1px #333;
+  color: #333;
 }
 
 #addTicket h2 {
   margin: 0 0 20px 0;
 }
 #addTicket input {
-  width: 30%;
-  margin: 6px 0 0 0;
+  width: 80px;
+  margin: 4px 0 16px 0;
+  background-color: var(--lightblue);
+  border: 0;
+  padding: 1rem;
+  color: var(--darkgrey);
+  font-size: 2rem;
 }
 #addTicket input[type=submit] {
-  width: 40%;
+  width: auto;
+  margin: 10px 0 12px 0;
+  border-radius: 8px;
+}
+
+pre {
+  font-size: 1.2rem;
+  color: white;
+}
+
+#error-stack {
+  background-image: url("/images/cartoon_crash.gif");
+  background-size: cover;
+  margin: 0;
+  padding: 50px;
+}
+
+#error-stack h1 {
+  text-shadow:var(--lightblue) 2px 2px 10px;
+}
+
+.past {
+  color: red !important;
 }

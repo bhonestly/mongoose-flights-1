@@ -20,38 +20,41 @@
 </table>
 
 <% if(flight.tickets.length > 0) { %>
-<h2>Tickets</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Seat</th>
-            <th>Price</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-<% flight.tickets.forEach(ticket => { %>
-        <tr>
-            <td><%= ticket.seat %></td>
-            <td>$<%= ticket.price %></td>
-            <td><form action="/flights/<%=flight._id%>/<%=ticket._id%>?_method=DELETE" method="POST"><input type="submit" value="X" class="delete-ticket"></form></td>
-        </tr>
-<% }) %>
-    </tbody>
-</table>
-<% } %>
+<section id="tickets">
 
-<form action="/flights/<%=flight._id%>" method="POST" id="addTicket">
+<div id="ticket-list">
+    <h2>Tickets</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Seat</th>
+                <th>Price</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+    <% flight.tickets.forEach(ticket => { %>
+            <tr>
+                <td><%= ticket.seat %></td>
+                <td>$<%= ticket.price %></td>
+                <td><form action="/flights/<%=flight._id%>/<%=ticket._id%>?_method=DELETE" method="POST"><input type="submit" value="X" class="delete-ticket"></form></td>
+            </tr>
+    <% }) %>
+        </tbody>
+    </table>
+</div>
+    <% } %>
+
+<div id="add-tickets">
     <h2>Add Tickets</h2>
-    <p>
+    <form action="/flights/<%=flight._id%>" method="POST" id="addTicket">
         <label for="seat">Seat</label>
         <input name="seat" required pattern="[A-F][1-9]\d?">
-    </p>
-    <p>
         <label for="price">Price</label>
         <input type="number" name="price" min=0>
-    </p>
-    <input type="submit" value="Add Ticket">
-</form>
+        <input type="submit" value="Add Ticket">
+    </form>
 
+</section>
+</div>
 <%- include('../partials/footer.ejs') %>
