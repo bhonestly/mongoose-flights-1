@@ -1,28 +1,40 @@
 <%- include('../partials/header.ejs') %>
 
-<form action="/destinations" method="POST">
+
+<div>
+    <form action="/destinations" method="POST" class="add-destinations">
+    <label for="airports">Airport</label>
+    <input type="text" name="airport" class="short-input">
+    <input type="submit" value="Add Destination">
+    
+    <% if (typeof err === 'object' && err.code === 11000) { %>
+    <p class="error">
+        That destination already exist. Please try again.
+    </p>
+    <% } %>
+    </form>
+</div>
+
+<% if (typeof destinations === 'object' && destinations.length > 0) { %>
+<div>
+    <h2>Current Destinations</h2>
     <table>
         <thead>
             <tr>
                 <th>Airport</th>
+                <th>Remove</th>
             </tr>
         </thead>
         <tbody>
+        <% destinations.forEach(dest => { %>
             <tr>
-                <td>
-                    <input type="text" name="airport">
-                </td>
+                <td><%= dest.airport %></td>
+                <td><form action="/destinations/<%=dest._id%>?_method=DELETE" method="POST"><input type="submit" value="X" class="delete-ecks"></form></td>
             </tr>
-            <tr>
-                <td>
-                    
-                </td>
-            </tr>
+        <% }) %>
         </tbody>
     </table>
-    
-    <input type="submit" value="Add Destination">
-    </form>
-
+</div>
+<% } %>
 
 <%- include('../partials/footer.ejs') %>

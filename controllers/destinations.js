@@ -1,36 +1,37 @@
 const Destination = require('../models/destination');
 
 module.exports = {
-    index,
     new: newDestination,
     create,
-}
-
-function index(req, res) {
-    Flight.find( {}, (err, flights) => {
-        if (err) console.log(err)
-        const now = new Date().toISOString();
-        flights.forEach( flight => {
-            if (flight.departs.toISOString() < now) flight.past = true;
-        })
-        res.render('flights/index', {
-            title: "All Flights",
-            flights
-        })
-    })
+    delete: deleteDestination
 }
 
 function newDestination(req, res) {
-    res.render('destinations/new', { title: "Add Destination" })
+    Destination.find( {}, (err, destinations) => {
+        if (err) console.log(err)
+        res.render('destinations/new', { 
+            title: "Add Destination",
+            destinations
+        })
+    })
 }
 
 function create(req, res) {
     const destination = new Destination(req.body);
     destination.save( err => {
         if (err) {
-            console.log(err)
-            return res.render('destinations/new', { title: "Add Destination" })
+            return res.render('destinations/new', { 
+                title: "Add Destination",
+                err
+             })
         }
-        res.redirect('/flights');
+        res.redirect('/destinations/new');
+    })
+}
+
+function deleteDestination(req, res) {
+    Destination.deleteOne( { _id : req.params.id }, err => {
+        if (err) console.log(err)
+        res.redirect('/destinations/new');
     })
 }

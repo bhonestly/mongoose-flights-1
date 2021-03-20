@@ -1,4 +1,5 @@
 const Flight = require('../models/flight');
+const Destination = require('../models/destination');
 
 module.exports = {
     index,
@@ -8,7 +9,9 @@ module.exports = {
     show,
     createTicket,
     deleteFlight,
-    deleteTicket
+    deleteTicket,
+    addDestination,
+    removeDestination
 }
 
 function index(req, res) {
@@ -59,8 +62,18 @@ function create(req, res) {
 
 function show(req, res) {
     Flight.findById(req.params.id)
-    .then(flight => res.render('flights/show', { title: "Flight Details", flight }))
-    .catch(err => console.log(err))
+    .populate('destinations').exec((err, flight) => {
+        if (err) console.log(err);
+        Destination.find( { _id: { $nin: flight.destinations }},
+        (err, destinations) => {
+            if (err) console.log(err);
+            res.render('flights/show', {
+                title: "Flight Details",
+                flight,
+                destinations
+            })
+        })
+    })
 }
 
 function createTicket(req, res) {
@@ -91,4 +104,28 @@ function deleteFlight(req, res) {
         if (err) console.log(err)
         res.redirect('/flights');
     })
+}
+
+function addDestination(req, res) {
+    Flight.findById(req.params.id)
+        .then(flight => {
+            flight.destinations.push(req.body.airportId);
+            flight.save( err => {
+                if (err) console.log(err);
+                res.redirect(`/flights/${flight._id}`);
+            })
+        })
+}
+
+function removeDestination(req, res) {
+    Flight.findById(req.params.id)
+        .then(flight => {
+            const destIndex = flight.destinations.findIndex( d => 
+                d.toString() == req.params.did )
+            flight.destinations.splice(destIndex, 1)
+            flight.save( err => {
+                if (err) console.log(err);
+                res.redirect(`/flights/${flight._id}`);
+            })
+        })
 }

@@ -7,7 +7,7 @@
         <th>Airline</th>
         <th>Airport</th>
         <th>Departs</th>
-        <th>Delete</th>
+        <th>Delete Flight</th>
     </tr>
     </thead>
     <tbody>
@@ -45,18 +45,54 @@
         </tbody>
     </table>
 </div>
-    <% } %>
+<% } %>
 
-<div id="add-tickets">
+<div>
     <h2>Add Tickets</h2>
-    <form action="/flights/<%=flight._id%>" method="POST" id="addTicket">
+    <form action="/flights/<%=flight._id%>" method="POST" id="add-ticket">
         <label for="seat">Seat</label>
-        <input name="seat" class="short-input" required pattern="[A-F][1-9]\d?">
+        <input name="seat" class="short-input" required 
+            placeholder="A10-F99" pattern="[A-F][1-9]\d?">
         <label for="price">Price</label>
         <input type="number" class="short-input" name="price" min=0>
         <input type="submit" value="Add Ticket">
     </form>
-
-</section>
 </div>
+</section>
+
+<section id="destinations">
+<% if(flight.destinations.length > 0) { %>
+<div id="dest-list">
+    <h2>Destinations</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Airport</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% flight.destinations.forEach(dest => { %>
+            <tr>
+                <td><%= dest.airport %></td>
+                <td><form action="/flights/<%=flight._id%>/<%=dest._id%>?_method=PUT" method="POST"><input type="submit" value="X" class="delete-ecks"></form></td>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
+</div>
+<% } %>
+
+<div>
+<h2>Add Destinations</h2>
+    <form class="add-destinations" action="/flights/<%=flight._id%>/destinations" method="post">
+    <select name="airportId">
+        <% destinations.forEach( dest => { %>
+            <option value="<%= dest._id %>"><%= dest.airport %></option>
+        <% }) %>
+    </select>
+    <input type="submit" value="Add Destination">
+    </form>
+</div>
+</section>
 <%- include('../partials/footer.ejs') %>

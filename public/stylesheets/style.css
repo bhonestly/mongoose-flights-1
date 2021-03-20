@@ -95,7 +95,7 @@ th {
 }
 
 .short-input {
-  width: 80px;
+  width: 120px;
 }
 
 input[type=submit] {
@@ -111,8 +111,8 @@ input[type=submit] {
 }
 
 input[type=submit]:active {
-  background: var(--midgrey);
-  color: var(--lightgrey);
+  background: var(--lightblue);
+  color: var(--darkblue);
 }
 
 input.delete-ecks {
@@ -160,14 +160,14 @@ nav > a:hover {
   margin: 0 0 0 20px;
 }
 
-#tickets {
+section {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-evenly;
 }
 
-#addTicket {
+#add-ticket, .add-destinations {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -179,13 +179,13 @@ nav > a:hover {
   width: 360px;
   border-radius: 20px;
   border: solid 1px #333;
-  color: #333;
+  color: var(--lightgrey);
 }
 
-#addTicket h2 {
+#add-ticket h2 {
   margin: 0 0 20px 0;
 }
-#addTicket input {
+#add-ticket input, .add-destinations input {
   margin: 4px 0 16px 0;
   background-color: var(--lightblue);
   border: 0;
@@ -193,6 +193,17 @@ nav > a:hover {
   color: var(--darkgrey);
   font-size: 2rem;
   border-radius: 4px;
+  text-align: center;
+}
+
+.add-destinations select {
+  margin: 16px 0;
+  padding: 12px;
+  background: var(--lightblue);
+  color: var(--darkgrey);
+  border: 0;
+  border-radius: 8px;
+  font-size: 2rem;
 }
 
 pre {
@@ -212,6 +223,6 @@ pre {
   text-shadow: var(--lightblue) 2px 2px 10px;
 }
 
-.past {
-  color: rgb(240, 90, 90) !important;
+.past, .error {
+  color: rgb(240, 110, 110) !important;
 }
