@@ -17,15 +17,19 @@ function newDestination(req, res) {
 }
 
 function create(req, res) {
-    const destination = new Destination(req.body);
-    destination.save( err => {
-        if (err) {
-            return res.render('destinations/new', { 
-                title: "Add Destination",
-                err
-             })
-        }
-        res.redirect('/destinations/new');
+    Destination.find( {}, (err, destinations) => {
+        if (err) console.log(err)
+        const destination = new Destination(req.body);
+        destination.save( err => {
+            if (err) {
+                return res.render('destinations/new', { 
+                    title: "Add Destination",
+                    err,
+                    destinations
+                })
+            }
+            res.redirect('/destinations/new');
+        })
     })
 }
 
