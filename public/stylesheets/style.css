@@ -33,7 +33,7 @@ body {
   /* --darkbg: #4F86B9; */
   --darkbg: #729EC7;
   --lightbg: #E1F5FF;
-  --medbg: #9CBBD8;
+  --medbg: #A6C2DC;
   --bodybg: #CDD0D4;
   --darkgrey: #313945;
   --lightgrey: #E2E3E6;
@@ -46,7 +46,6 @@ a {
   color:  var(--linkcolor);
   text-decoration: none;
   font-size: 2.2rem;
-  font-weight: bold;
 }
 
 a:hover {
