@@ -110,16 +110,16 @@ input[type=submit] {
   margin: 10px 0 12px 0;
   border-radius: 8px;
   border: 0;
-  background: var(--lightgrey);
   padding: 16px 20px;
   border: solid 1px var(--darkgrey);
   font-size: 2rem;
-  color: var(--darkbg);
+  background: var(--lightbg);
+  color: var(--darkgrey);
 }
 
 input[type=submit]:active {
-  background: var(--lightbg);
-  color: var(--darkbg);
+  background: var(--darkbg);
+  color: var(--lightbg);
 }
 
 input.delete-ecks {
@@ -128,6 +128,16 @@ input.delete-ecks {
   font-size: 1.6rem;
   color: var(--darkgrey);
   padding: 8px 12px;
+  background: var(--lightgrey) !important;
+}
+
+input.delete-ecks:active {
+  border-radius: 4;
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--darkgrey);
+  padding: 8px 12px;
+  background: var(--lightbg) !important;
 }
 
 nav {
@@ -192,10 +202,11 @@ section {
 #add-ticket h2 {
   margin: 0 0 20px 0;
 }
-#add-ticket input, .add-destinations input {
+section input {
   margin: 4px 0 16px 0;
-  background-color: var(--lightbg);
-  border: solid 1px #333;
+  /* background-color: var(--lightbg); */
+  background-color: #fff;
+  border: solid 1px var(--darkgrey);
   padding: 1rem;
   color: var(--darkgrey);
   font-size: 2rem;
@@ -203,15 +214,28 @@ section {
   text-align: center;
 }
 
-.add-destinations select {
+section select {
   margin: 16px 0;
   padding: 12px;
-  background: var(--lightbg);
+  background: #fff;
   color: var(--darkgrey);
-  border: 0;
+  border: solid 1px var(--darkgrey);
   border-radius: 8px;
   font-size: 2rem;
 }
+
+section input[type=submit] {
+  background: var(--lightbg);
+  color: var(--darkgrey)
+}
+
+section input[type=submit]:active {
+  background: var(--lightgrey);
+  color: var(--darkgrey);
+}
+
+
+
 
 pre {
   font-size: 1.2rem;
