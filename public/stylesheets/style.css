@@ -25,21 +25,27 @@ body {
   color: var(--darkgrey);
   min-height: 100vh;
   margin: 0 auto;
-  background: var(--midgrey);
+  background: var(--bodybg);
 
-  --darkblue: #3b78b1;
-  --lightblue: #daf3ff;
-  --midgrey: #9EA3AB;
-  --darkgrey: #3d4756;
+  /* --darkbg: #3b78b1;
+  --lightbg: #daf3ff; */
+
+  /* --darkbg: #4F86B9; */
+  --darkbg: #729EC7;
+  --lightbg: #E1F5FF;
+  --medbg: #9CBBD8;
+  --bodybg: #CDD0D4;
+  --darkgrey: #313945;
   --lightgrey: #E2E3E6;
-  --orange: #dfa01f;
-
+  --linkcolor: #345C83;
+  --headers: #fcc400;
+  
 }
 
 a {
-  color:  var(--lightblue);
+  color:  var(--linkcolor);
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: bold;
 }
 
@@ -50,14 +56,14 @@ a:hover {
 h1 {
   margin: 20px 0 20px 0;
   font-size: 6rem;
-  color: var(--orange);
-  text-shadow: var(--darkblue) 2px 2px 5px;
+  color: var(--headers);
+  text-shadow: var(--darkgrey) 2px 2px 5px;
 }
 
 h2 {
   text-align: center;
-  color: var(--orange);
-  text-shadow: var(--darkblue) 2px 2px 5px;
+  color: var(--headers);
+  text-shadow: var(--darkgrey) 2px 2px 5px;
   margin: 10px 0;
 }
 
@@ -65,20 +71,21 @@ table {
   border-spacing: 0;
   border-collapse: collapse;
   margin: 20px auto;
-  color: white;
-  font-size: 2rem;
+  font-size: 1.8rem;
+  color: var(--darkgrey);
 }
 
 table a {
-  color: var(--orange);
+  color: var(--linkcolor);
+  font-size: 2rem;
 }
 
-tbody > tr:nth-child(even), th {
-  background: var(--darkblue);
+tbody > tr:nth-child(even){
+  background: var(--medbg);
 }
 tbody > tr:nth-child(odd) {
-  background: var(--lightblue);
-  color: var(--darkgrey);
+  background: var(--lightbg);
+  /* color: var(--darkgrey); */
 }
 
 td, th {
@@ -90,8 +97,9 @@ td, th {
 
 
 th {
-  font-size: 2.5rem;
-  color: var(--lightblue);
+  font-size: 2.2rem;
+  color: var(--lightbg);
+  background-color: var(--darkbg);
 }
 
 .short-input {
@@ -107,12 +115,12 @@ input[type=submit] {
   padding: 16px 20px;
   border: solid 1px var(--darkgrey);
   font-size: 2rem;
-  color: var(--darkblue);
+  color: var(--darkbg);
 }
 
 input[type=submit]:active {
-  background: var(--lightblue);
-  color: var(--darkblue);
+  background: var(--lightbg);
+  color: var(--darkbg);
 }
 
 input.delete-ecks {
@@ -128,17 +136,17 @@ nav {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  background: var(--darkblue);
+  background: var(--darkbg);
   border-bottom: solid 1px black;
 }
 
 nav > a {
   display: inline-block;
-  background: rgb(59, 120, 177);
+  background: var(--darkbg);
   padding: 20px;
   margin: 0;
   text-decoration: none;
-  color: var(--lightblue);
+  color: var(--lightbg);
   font-size: 18px;
   font-weight: bold;
   text-transform: uppercase;
@@ -146,8 +154,8 @@ nav > a {
 
 nav > a:hover {
   text-decoration: none;
-  background: var(--lightblue);
-  color: var(--orange);
+  background: var(--lightbg);
+  color: var(--linkcolor);
 }
 
 #container {
@@ -173,13 +181,13 @@ section {
   align-items: center;
   justify-content: center;
   margin: 20px auto;
-  background: var(--darkblue);
+  background: var(--darkbg);
   padding: 20px;
   text-align: center;
   width: 360px;
   border-radius: 20px;
   border: solid 1px #333;
-  color: var(--lightgrey);
+  color: var(--lightbg);
 }
 
 #add-ticket h2 {
@@ -187,7 +195,7 @@ section {
 }
 #add-ticket input, .add-destinations input {
   margin: 4px 0 16px 0;
-  background-color: var(--lightblue);
+  background-color: var(--lightbg);
   border: solid 1px #333;
   padding: 1rem;
   color: var(--darkgrey);
@@ -199,7 +207,7 @@ section {
 .add-destinations select {
   margin: 16px 0;
   padding: 12px;
-  background: var(--lightblue);
+  background: var(--lightbg);
   color: var(--darkgrey);
   border: 0;
   border-radius: 8px;
@@ -220,9 +228,9 @@ pre {
 }
 
 #error-stack h1 {
-  text-shadow: var(--lightblue) 2px 2px 10px;
+  text-shadow: var(--lightbg) 2px 2px 10px;
 }
 
 .past, .error {
-  color: rgb(240, 110, 110) !important;
+  color: rgb(255, 68, 68) !important;
 }
