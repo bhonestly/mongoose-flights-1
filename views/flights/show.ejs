@@ -52,7 +52,7 @@
     <form action="/flights/<%=flight._id%>" method="POST" id="add-ticket">
         <label for="seat">Seat</label>
         <input name="seat" class="short-input" required 
-            placeholder="A10-F99" pattern="[A-F][1-9]\d?">
+            placeholder="A1-F99" pattern="[A-F][1-9]\d?">
         <label for="price">Price</label>
         <input type="number" class="short-input" name="price" min=0>
         <input type="submit" value="Add Ticket">
